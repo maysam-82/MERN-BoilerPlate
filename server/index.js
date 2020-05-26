@@ -9,8 +9,15 @@ const morgan = require('morgan');
 
 // Create an instance of express
 const app = express();
-
+1;
 const router = require('./router');
+const mongoose = require('mongoose');
+
+//  DB setup
+mongoose.connect('mongodb://localhost:27017/auth', {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
 
 // App setup
 // Any incomming request will be passed into morgan and bodyParser as middlwares.
