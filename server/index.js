@@ -1,12 +1,16 @@
 const express = require('express');
 const http = require('http');
+
 // middleware of express
 const bodyParser = require('body-parser');
+
 // middleware of express
 const morgan = require('morgan');
 
 // Create an instance of express
 const app = express();
+
+const router = require('./router');
 
 // App setup
 // Any incomming request will be passed into morgan and bodyParser as middlwares.
@@ -14,7 +18,7 @@ const app = express();
 // BodyParser will parse all incomming requestes to json no matter what the request type is.
 app.use(morgan('combined'));
 app.use(bodyParser.json({ type: '*/*' }));
-
+router(app);
 // Server Setup
 const port = process.env.PORT || 3090;
 
