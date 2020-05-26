@@ -6,6 +6,8 @@ const passport = require('passport');
 
 // helper (middleware)for any route we need to be authenticated.
 const requireAuth = passport.authenticate('jwt', { session: false });
+// helper (middleware)for any route we need to be authenticated.
+const requireSignin = passport.authenticate('local', { session: false });
 
 module.exports = function (app) {
 	// if user visits the app with `/` route, then run callback function.
@@ -18,5 +20,6 @@ module.exports = function (app) {
 	app.get('/', requireAuth, function (req, res) {
 		res.send({ hi: 'there' });
 	});
+	app.post('/signin', requireSignin, Authentication.signin);
 	app.post('/signup', Authentication.signup);
 };
