@@ -1,4 +1,14 @@
+const jwt = require('jwt-simple');
 const User = require('../models/user');
+const config = require('../config');
+
+function tokenForUser(user) {
+	const timestamp = new Date().getTime();
+	// sub is short for subject. the subject of the token belongs to user.id.
+	// iat: means `issued at time`.
+	return jwt.encode({ sub: user.id, iat: timestamp }, config.SECRET_KEY);
+}
+
 exports.signup = function (req, res, next) {
 	//  pull data from request by the use of body. body means anything contains with post request.
 	const email = req.body.email;
@@ -35,7 +45,8 @@ exports.signup = function (req, res, next) {
 			}
 
 			//  respond to request that user was created.
-			return res.json({ user });
+			// send an identifying token.
+			return res.json({ token: tokenForUser(user) });
 		});
 	});
 };
