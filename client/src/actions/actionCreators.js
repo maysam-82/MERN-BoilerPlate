@@ -27,3 +27,11 @@ export const signup = (formProps, callback) => async (dispatch) => {
 		});
 	}
 };
+
+export const signout = () => {
+	localStorage.removeItem('token');
+	return {
+		type: actionTypes.AUTH_USER,
+		payload: '',
+	};
+};
