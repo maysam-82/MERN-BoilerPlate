@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background-color: #ccc;
+  padding: 10px;
+}
+
+.header a {
+  margin: 0 10px;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  color: #000;
+}
+.header div:first-child {
+  width: 10%;
+}
+
+.header div:last-child {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
