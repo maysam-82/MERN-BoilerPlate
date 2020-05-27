@@ -11,6 +11,7 @@ import Feature from './Components/Feature';
 import reducers from './reducers';
 import Signout from './Containers/Auth/Signout';
 import Signin from './Containers/Auth/Signin';
+import './index.css';
 
 const store = createStore(
 	reducers,
