@@ -10,6 +10,7 @@ import Signup from './Containers/Auth/Signup';
 import Feature from './Components/Feature';
 import reducers from './reducers';
 import Signout from './Containers/Auth/Signout';
+import Signin from './Containers/Auth/Signin';
 
 const store = createStore(
 	reducers,
