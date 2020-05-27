@@ -4,9 +4,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { signup } from '../../../actions/actionCreators';
 
-const Signup = ({ handleSubmit, signup, errorMessage }) => {
+const Signup = ({ handleSubmit, signup, errorMessage, history }) => {
 	const onSubmit = (formProps) => {
-		signup(formProps);
+		signup(formProps, () => {
+			history.push('/feature');
+		});
 	};
 	return (
 		<div>
