@@ -9,10 +9,9 @@ const morgan = require('morgan');
 
 // Create an instance of express
 const app = express();
-1;
-const router = require('./router');
 const mongoose = require('mongoose');
-
+const router = require('./router');
+const cors = require('cors');
 //  DB setup
 mongoose.connect('mongodb://localhost:27017/auth', {
 	useNewUrlParser: true,
@@ -24,6 +23,7 @@ mongoose.connect('mongodb://localhost:27017/auth', {
 // Morgan is a logging framework which shows all request in the terminal
 // BodyParser will parse all incomming requestes to json no matter what the request type is.
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 // Server Setup
