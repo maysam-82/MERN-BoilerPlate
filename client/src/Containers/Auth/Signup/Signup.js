@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { signup } from '../../../actions/actionCreators';
 
-const Signup = ({ handleSubmit, signup }) => {
+const Signup = ({ handleSubmit, signup, errorMessage }) => {
 	const onSubmit = (formProps) => {
 		signup(formProps);
 	};
@@ -29,14 +29,21 @@ const Signup = ({ handleSubmit, signup }) => {
 						autoComplete="none"
 					/>
 				</fieldset>
+				{errorMessage ? <div>{errorMessage}</div> : null}
 				<button>Sign up</button>
 			</form>
 		</div>
 	);
 };
 
+const mapStateToProps = (state) => {
+	return {
+		errorMessage: state.auth.errorMessage,
+	};
+};
+
 // compose allows us to apply multiple HOCs to a single component
 export default compose(
-	connect(null, { signup }),
+	connect(mapStateToProps, { signup }),
 	reduxForm({ form: 'signup' })
 )(Signup);
